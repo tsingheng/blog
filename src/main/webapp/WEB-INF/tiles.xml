@@ -4,17 +4,13 @@
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-	<definition name="blog.template.java.basic" template="/WEB-INF/page/layout/layout-java-basic.jsp"/>
-	
-	<!-- 
-	<definition name="blog.index" extends="blog.template">
+	<definition name="blog.template.main" template="/WEB-INF/page/layout/layout-main.jsp"/>
+
+	<definition name="blog.index" extends="blog.template.main">
 		<put-attribute name="content" value="/WEB-INF/page/index.jsp"/>
 	</definition>
-	-->
-	<definition name="blog.java.basic.list" extends="blog.template.java.basic">
-		<put-attribute name="content" value="/WEB-INF/page/java-basic/list.jsp"/>
-	</definition>
-	<definition name="blog.java.basic.install-jdk" extends="blog.template.java.basic">
-		<put-attribute name="content" value="/WEB-INF/page/java-basic/install-jdk.jsp"/>
+	
+	<definition name="blog.java.basic" extends="blog.template.main">
+		<put-attribute name="content" value="/WEB-INF/page/java-basic.jsp"/>
 	</definition>
 </tiles-definitions>
