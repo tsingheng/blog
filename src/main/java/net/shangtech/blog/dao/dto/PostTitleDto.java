@@ -14,6 +14,9 @@ public class PostTitleDto implements Serializable {
 
 	private static final long serialVersionUID = -7708401856794975429L;
 	
+	@Column(name = "id")
+	private Number id;
+	
 	/** 编码,url */
 	@Column(name = "code")
 	private String code;
@@ -25,6 +28,9 @@ public class PostTitleDto implements Serializable {
 	/** 创建时间 */
 	@Column(name = "create_time")
 	private Date createTime;
+	
+	@Column(name = "sort")
+	private Number sort;
 
 	public String getCode() {
 		return code;
@@ -48,6 +54,22 @@ public class PostTitleDto implements Serializable {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public Number getSort() {
+		return sort;
+	}
+
+	public void setSort(Number sort) {
+		this.sort = sort;
+	}
+
+	public Number getId() {
+		return id;
+	}
+
+	public void setId(Number id) {
+		this.id = id;
 	}
 	
 }

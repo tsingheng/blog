@@ -97,5 +97,37 @@ public class Post extends BaseEntity<Long> {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public Long getSeriesId() {
+		return seriesId;
+	}
+
+	public void setSeriesId(Long seriesId) {
+		this.seriesId = seriesId;
+	}
+
+	public String getSeoTitle() {
+		return seoTitle;
+	}
+
+	public void setSeoTitle(String seoTitle) {
+		this.seoTitle = seoTitle;
+	}
+
+	public String getSeoKeywords() {
+		return seoKeywords;
+	}
+
+	public void setSeoKeywords(String seoKeywords) {
+		this.seoKeywords = seoKeywords;
+	}
+
+	public String getSeoDescription() {
+		return seoDescription;
+	}
+
+	public void setSeoDescription(String seoDescription) {
+		this.seoDescription = seoDescription;
+	}
 	
 }

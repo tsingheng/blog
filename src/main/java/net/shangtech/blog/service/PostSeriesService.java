@@ -19,4 +19,12 @@ public class PostSeriesService extends BaseService<PostSeries> {
 	public List<PostSeries> findAllSeries(){
 		return dao.findAllSeries();
 	}
+	
+	public void updateSeries(PostSeries series){
+		PostSeries old = dao.find(series.getId());
+		old.setCode(series.getCode());
+		old.setName(series.getName());
+		old.setSort(series.getSort());
+		dao.update(old);
+	}
 }

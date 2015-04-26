@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="blog.template.admin" template="/WEB-INF/page/layout/layout-admin.jsp"/>
+
+	<definition name="blog.admin.main" extends="blog.template.main">
+		<put-attribute name="content" value="/WEB-INF/page/index.jsp"/>
+	</definition>
+	
+	<definition name="blog.admin.series" extends="blog.template.admin">
+		<put-attribute name="content" value="/WEB-INF/page/admin/post-series.jsp"/>
+	</definition>
+	<definition name="blog.admin.series.form" template="/WEB-INF/page/admin/series-form.jsp"/>
+</tiles-definitions>

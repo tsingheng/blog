@@ -1,5 +1,9 @@
 package net.shangtech.blog.controller;
 
+import java.util.Date;
+import java.util.List;
+
+import net.shangtech.blog.dao.dto.PostTitleDto;
 import net.shangtech.blog.entity.Post;
 import net.shangtech.blog.entity.PostSeries;
 import net.shangtech.blog.service.AdminService;
@@ -63,6 +67,16 @@ public class AdminController {
 	 */
 	@RequestMapping("/series")
 	public String series(Model model, Long seriesId){
+		List<PostSeries> seriesList = seriesService.findAllSeries();
+		model.addAttribute("seriesList", seriesList);
+		
+		if(seriesId != null){
+			List<PostTitleDto> postList = postService.findBySeriesId(seriesId);
+			model.addAttribute("postList", postList);
+			PostSeries series = seriesService.find(seriesId);
+			model.addAttribute("series", series);
+			model.addAttribute("seriesId", seriesId);
+		}
 		return "blog.admin.series";
 	}
 	
@@ -72,7 +86,11 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping("/series/form")
-	public String seriesForm(Long id){
+	public String seriesForm(Long id, Model model){
+		if(id != null){
+			PostSeries series = seriesService.find(id);
+			model.addAttribute("series", series);
+		}
 		return "blog.admin.series.form";
 	}
 	
@@ -81,10 +99,16 @@ public class AdminController {
 	 * @param series
 	 * @return
 	 */
-	@RequestMapping(value = "/series/save", method = RequestMethod.GET)
+	@ResponseBody
+	@RequestMapping(value = "/series/save", method = RequestMethod.POST)
 	public AjaxResponse saveSeries(PostSeries series){
 		AjaxResponse ajaxResponse = AjaxResponse.instance();
-		
+		if(series.getId() == null){
+			seriesService.save(series);
+		}else{
+			seriesService.updateSeries(series);
+		}
+		ajaxResponse.setSuccess(true);
 		return ajaxResponse;
 	}
 	
@@ -94,16 +118,24 @@ public class AdminController {
 	 * @param code
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping("/post")
-	public String post(Model model, Long id){
-		
-		return "blog.admin.post";
+	public Post post(Long id){
+		Post post = postService.find(id);
+		return post;
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/post/save", method = RequestMethod.POST)
 	public AjaxResponse savePost(Post post){
 		AjaxResponse ajaxResponse = AjaxResponse.instance();
-		
+		if(post.getId() == null){
+			post.setCreateTime(new Date());
+			postService.save(post);
+		}else{
+			postService.updatePost(post);
+		}
+		ajaxResponse.setSuccess(true);
 		return ajaxResponse;
 	}
 }

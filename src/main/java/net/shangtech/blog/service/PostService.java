@@ -24,4 +24,16 @@ public class PostService extends BaseService<Post> {
 	public Post findByCode(String code){
 		return dao.findByCode(code);
 	}
+	
+	public void updatePost(Post post){
+		Post old = dao.find(post.getId());
+		old.setCode(post.getCode());
+		old.setContent(post.getContent());
+		old.setSort(post.getSort());
+		old.setTitle(post.getTitle());
+		old.setSeoDescription(post.getSeoDescription());
+		old.setSeoKeywords(post.getSeoKeywords());
+		old.setSeoTitle(post.getSeoTitle());
+		dao.update(old);
+	}
 }

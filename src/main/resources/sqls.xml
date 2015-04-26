@@ -6,7 +6,7 @@
 	<sql id="PostTitleDto.findBySeries">
 		<![CDATA[
 			SELECT 
-				code,title,create_time
+				id, code,title,create_time,sort
 			FROM 
 				t_post 
 			WHERE 
