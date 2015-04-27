@@ -33,7 +33,7 @@ public class MainController {
 	public String javaBasic(@PathVariable String page, Model model){
 		model.addAttribute("menu", "java-basic");
 		
-		Post post = postService.findByCode("/java-basic/" + page);
+		Post post = postService.findByCode("java-basic/" + page);
 		model.addAttribute("post", post);
 		return "blog.java.basic";
 	}

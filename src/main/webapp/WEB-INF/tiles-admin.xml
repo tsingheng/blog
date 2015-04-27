@@ -6,7 +6,7 @@
 <tiles-definitions>
 	<definition name="blog.template.admin" template="/WEB-INF/page/layout/layout-admin.jsp"/>
 
-	<definition name="blog.admin.main" extends="blog.template.main">
+	<definition name="blog.admin.main" extends="blog.template.admin">
 		<put-attribute name="content" value="/WEB-INF/page/index.jsp"/>
 	</definition>
 	
@@ -14,4 +14,6 @@
 		<put-attribute name="content" value="/WEB-INF/page/admin/post-series.jsp"/>
 	</definition>
 	<definition name="blog.admin.series.form" template="/WEB-INF/page/admin/series-form.jsp"/>
+	
+	<definition name="blog.admin.login" template="/WEB-INF/page/admin/login.jsp"/>
 </tiles-definitions>

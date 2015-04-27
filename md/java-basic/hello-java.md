@@ -142,4 +142,67 @@ public Person{
 Person a = new Person();
 int sum = a.operateAdd(1, 2);
 System.out.println("小明计算出来1+2=" + sum);
+//小明计算出来1+2=3
 ```
+
+下面实现一个完整的Person类   
+首先新建文件Person.java内容如下
+
+```
+public class Person{
+	//姓名
+	private String name = "小明";
+	
+	//年龄
+	private Integer age = 10;
+	
+	//自我介绍
+	public void introduce(){
+		System.out.println("你好，我叫" + name + ", 我今年" + age + "岁了");
+	}
+	
+	//休息
+	public void sleep(){
+		System.out.println("太困了睡一会儿");
+	}
+	
+	//长大,参数表示长大几岁
+	public void growUp(int year){
+		age = age + year;
+		System.out.println("我长了" + year + "岁, 我现在" + age + "岁了");
+	}
+	
+}
+```
+这个Person类有姓名(name)和年龄(age)两个属性，还有三个方法代码里面都有说明   
+然后再新建文件PersonApp.java，跟Person.java保存在同一个目录，代码如下
+
+```
+public class PersonApp{
+	public static void main(String[] args){
+		//创建一个Person对象
+		Person ming = new Person();
+		
+		//让ming自我介绍
+		ming.introduce();
+		
+		//让ming休息一会儿
+		ming.sleep();
+		
+		//ming长大两岁
+		ming.growUp(2);
+		
+		//ming重新自我介绍
+		ming.introduce();
+	}
+}
+```
+PersonApp这个类只有一个main方法，还记得吗，main方法是Java程序的入口，所以等会儿程序就是从这儿开始执行的，在main方法里面创建了一个Person对象，并调用了该对象的方法。  
+然后编译代码，打开命令行窗口，cd到源代码所在目录，先执行`javac Person.java`，再执行`javac PersonApp.java`，两个文件就都编译好了。   
+如果你完全照抄我上面的代码，然后编译爆出来一大堆看不懂的东西，截图如下
+![](http://shangtech-blog.oss-cn-hangzhou.aliyuncs.com/java-basic/hello-java/B012E546-3079-47E3-B82A-CB1147799888.png)   
+出现这个东西的原因是我上面代码里面有中文，保存的时候乱码了，如果你用的是我推荐的notepad++，那就再打开Person.java和PersonApp.java，选择菜单“格式-以ANSI格式编码”，然后发现刚才好好的文件中文都变得乱七八糟，就是乱码了，重新写一遍保存就好了，两个文件执行一样的操作，都保存好，重新编译应该就通过了。
+![](http://shangtech-blog.oss-cn-hangzhou.aliyuncs.com/java-basic/hello-java/02257FAD-A16B-4CC4-963E-434027965B27.png)   
+编译通过之后执行`java PersonApp`,就会看到下面的输出了
+![](http://shangtech-blog.oss-cn-hangzhou.aliyuncs.com/java-basic/hello-java/5D481AE3-C663-4EEF-91AF-2C252C5798D1.png)   
+很简单的例子哦，体会体会吧。

@@ -3,7 +3,10 @@ package net.shangtech.blog.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.shangtech.blog.dao.dto.PostTitleDto;
+import net.shangtech.blog.entity.Admin;
 import net.shangtech.blog.entity.Post;
 import net.shangtech.blog.entity.PostSeries;
 import net.shangtech.blog.service.AdminService;
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -43,9 +47,15 @@ public class AdminController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public AjaxResponse login(String username, String password){
+	public AjaxResponse login(@RequestParam String username, @RequestParam String password, HttpServletRequest request){
 		AjaxResponse ajaxResponse = AjaxResponse.instance();
-		
+		Admin admin = adminService.findByUsername(username);
+		if(admin == null || !password.equals(admin.getPasswrod())){
+			ajaxResponse.addError("password", "账号或密码错误");
+			return ajaxResponse;
+		}
+		request.getSession().setAttribute("LOGIN_ADMIN", admin);
+		ajaxResponse.setSuccess(true);
 		return ajaxResponse;
 	}
 	

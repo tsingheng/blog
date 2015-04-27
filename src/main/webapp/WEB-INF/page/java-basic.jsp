@@ -9,11 +9,11 @@
 	<div class="col-md-3">
 		<nav data-spy="affix" data-offset-top="60" data-offset-bottom="200" class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
 			<ul class="nav bs-docs-sidenav">
-				<li class="active">
+				<li class="${post.code eq 'java-basic/install-jdk' ? 'active' : ''}">
 					<a href="${ctx}/java-basic/install-jdk">JDK安装</a>
 				</li>
-				<li>
-					<a href="${ctx}/java-basic/install-jdk">数据类型</a>
+				<li class="${post.code eq 'java-basic/hello-java' ? 'active' : ''}">
+					<a href="${ctx}/java-basic/hello-java">数据类型</a>
 				</li>
 			</ul>
 			<a class="back-to-top" href="javascript:;">返回顶部</a>

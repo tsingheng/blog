@@ -14,7 +14,7 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="${menu eq 'java-basic' ? 'active' : ''}">
-          <a href="${ctx}/java-basic/">JAVA起步</a>
+          <a href="${ctx}/java-basic/about-java-basic">JAVA起步</a>
         </li>
       </ul>
       <%-- 
