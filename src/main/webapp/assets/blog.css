@@ -107,6 +107,11 @@
 		display: block;
 	}
 }
+.footer{
+	border-top:1px solid #ddd;
+	margin-top:40px;
+	padding-top:15px;
+}
 
 body {
   font-family: Helvetica, arial, sans-serif;
