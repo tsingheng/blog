@@ -39,5 +39,103 @@ a = a + b;
 下面是Thinking in java上数学运算符用法的例子 
 
 ```
+//演示Java数学操作符
+import java.util.*;
+
+public class MathOps {
+	public static void main(String[] args){
+		Random rand = new Random(47);
+		int i;
+		int j = rand.nextInt(100) + 1;//[1, 100]区间内随机的整数
+		int k = rand.nextInt(100) + 1;//[1, 100]区间内随机的整数
+		System.out.println("j is " + j);//打印出j的值
+		System.out.println("k is " + k);//打印出k的值
+		
+		i = j + k;
+		System.out.println("j + k is " + i);//打印j+k的结果
+		
+		i = j - k;
+		System.out.println("j - k is " + i);
+		
+		i = k / j;
+		System.out.println("k / j is " + i);
+		
+		i = k * j;
+		System.out.println("k * j is " + i);
+		
+		i = k % j;
+		System.out.println("k % j is " + i);
+		
+		j %= k;//这一行相当于j = j % k;
+		System.out.println("j %= k is " + j);
+		
+		float u;
+		float v = rand.nextFloat();
+		float w = rand.nextFloat();
+		System.out.println("v is " + v);
+		System.out.println("w is " + w);
+		
+		u = v + w;
+		System.out.println("v + w is " + u);
+		
+		u = v - w;
+		System.out.println("v - w is " + u);
+		
+		u = v * w;
+		System.out.println("v * w is " + u);
+		
+		u = v / w;
+		System.out.println("v / w is " + u);
+		
+		u += v;//相当于u = u + v;
+		System.out.println("u += v is " + u);
+		
+		u -= v;//相当于u = u - v;
+		System.out.println("u -= v is " + u);
+		
+		u *= v;//相当于u = u * v;
+		System.out.println("u *= v is " + u);
+		
+		u /= v;//相当于u = u / v;
+		System.out.println("u /= v is " + u);
+	}
+}
+```
+上面代码先创建了一个Random对象，Random是java自带的一个类，可以生成随机的数字。首先生成了两个[1, 100]的随机整数j和k，然后打印出来j和k的值，然后用j和k进行加减乘除模操作并输出结果。然后生成两个随机的小数v和w，然后进行加减乘除。因为数字是随机生成的，所以每次执行结果都是不一样的。我这里执行结果截图如下
+![](http://shangtech-blog.oss-cn-hangzhou.aliyuncs.com/java-basic/operators/C2EE73DC-51AB-4485-AB2B-FCA1EAE5260E.png)   
+另外加号和减号还有另外一个作用，没错，可以做正负号，比如
 
 ```
+int a = 1;
+int b = -a; //b is -1
+int x = a * -b;// 这样写虽然也是对的，但是利于阅读，用下面的方式更好。
+int x = a * (-b);
+```
+#### 自增和自减
+自增是两个连续的加号，并且有加号在变量前面和后面两种形式。自增会进行两个操作，一个是变量值加1，并且会返回变量的值，如果加号在变量前面，先给变量+1，再返回变量值，如果加号在变量后面，则先返回变量值，然后给变量+1。下面对比一下两种形式   
+
+```
+int a = 3;
+int x = ++a;
+//最后a的值是4,x的值也是4
+```
+等价于
+
+```
+int a = 3;
+a = a + 1;
+int x = a;
+```
+```
+int a = 3;
+int x = a++;
+//最后a的值4,而x的值是3
+```
+等价于   
+
+```
+int a = 3;
+int x = a;
+a = a + 1;
+```
+自减跟自增是同样地道理，只不过执行的操作是减1
